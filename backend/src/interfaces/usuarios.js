@@ -15,7 +15,7 @@ const cadastrarUsuario = async (user) => {
 }
 
 const verificarUsuario = async (user) => {
-    
+    try{    
     let valor = usuario.findOne({
         where: {
             usuario: user.usuario,
@@ -24,8 +24,10 @@ const verificarUsuario = async (user) => {
         raw : true
 
     })
-    
     return valor
+}catch(erro){
+    console.log(erro)
+}
     
     
 }
