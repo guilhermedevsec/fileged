@@ -17,4 +17,6 @@ const Document = db.sequelize.define('tipo', {
             }
         })
 
+/*        Document.sync({force : true}) */
+
 module.exports = Document

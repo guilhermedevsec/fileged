@@ -26,7 +26,9 @@ const recuperarDados = async () =>{
 
 }
 
+
+
 module.exports = {
     inseriDados : inserirDados,
-    recuperarDados : recuperarDados
+    recuperarDados : recuperarDados,
 }   
