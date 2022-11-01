@@ -1,5 +1,6 @@
 //Rotas
 const express = require('express')
+const cors = require('cors')
 const interfaceDocumentos = require('../interfaces/documentos')
 const interfaceUsuarios = require('../interfaces/usuarios')
 const app = express()
@@ -12,6 +13,11 @@ app.get('/', async (req, res) => {
 
 //Autenticação
 app.post('/login', async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'POST');
+    app.use(cors());
+
+
     res.status(200)
     retorno = await interfaceUsuarios.verificarUsuario(req.body)
     try{
@@ -26,7 +32,7 @@ app.post('/login', async (req, res, next) => {
         const token = jwt.sign({ id }, process.env.AUTH, {
             expiresIn: 300
         })
-        return res.json({ auth: true, token: token })
+        return res.json({ usuario: req.body.usuario, senha: req.body.senha, token: token })
 
     }
 
